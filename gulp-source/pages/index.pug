@@ -1,0 +1,31 @@
+include mixins
++doctype('RN Calculator')
+
+body
+    main.main
+        .container
+            .ui.form
+                .field
+                    label(for="element") Элемент
+                    input#element(type='text' name='element' value="")
+
+                .field
+                    label(for="result") Результат
+                    input#result(type='text' name='result' value="")
+
+                .field
+                    .ui.buttons
+                        button.ui.button#wp.active wp
+                        button.ui.button#hp hp
+                        button.ui.button#fs fs
+
+                .two.fields.defaultValues
+                    .field
+                        label(for="height") Высота
+                        input#height(type='text' name='height' value="640")
+                    .field
+                        label(for="width") Ширина
+                        input#width(type='text' name='width' value="360")
+
+script(src='script.js')
+script(src='renderer.js')
