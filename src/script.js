@@ -43,7 +43,6 @@ function calculate() {
 }
 
 function copyTotal(str) {
-
     let tmp   = document.createElement('INPUT'), // Создаём новый текстовой input
         focus = document.activeElement // Получаем ссылку на элемент в фокусе (чтобы не терять фокус)
 
@@ -62,4 +61,4 @@ function getTotalValue() {
 }
 
 allButtons.forEach(button => button.addEventListener('click', toggleActiveButton))
-allInputs.forEach(input => input.addEventListener('change', getTotalValue))
+allInputs.forEach(input => input.addEventListener('input', getTotalValue))
