@@ -10,7 +10,35 @@ const allButtons = document.querySelectorAll('.button')
 let activeButton = 'wp'
 let calculated
 
-function toggleActiveButton() {
+/**
+ * Get active button on keyboard press
+ *
+ * @param {'wp' | 'hp' | 'fs'} id
+ *
+ * @return {undefined}
+ */
+function handleActiveButton(id)
+{
+    const currentButton = document.querySelector(`#${id}`)
+
+    allButtons.forEach(button => {
+        button.classList.remove('active')
+    })
+
+    currentButton.classList.add('active')
+
+    activeButton = id
+
+    getTotalValue()
+}
+
+/**
+ * Toggle active button on press current
+ *
+ * @return {undefined}
+ */
+function toggleActiveButton()
+{
     if (!this.classList.contains('active')) {
         allButtons.forEach(button => {
             button.classList.remove('active')
@@ -24,7 +52,13 @@ function toggleActiveButton() {
     getTotalValue()
 }
 
-function calculate() {
+/**
+ * Calculate value for current params
+ *
+ * @return {undefined}
+ */
+function calculate()
+{
     let currentNumberForCalculate
 
     if (activeButton === 'wp' || activeButton === 'fs') {
@@ -33,7 +67,7 @@ function calculate() {
         currentNumberForCalculate = height.value.toString()
     )
 
-    calculated = element.value.toString() / currentNumberForCalculate * 100;
+    calculated = element.value.toString() / currentNumberForCalculate * 100
 
     if (activeButton === 'wp' || activeButton === 'fs') {
         result.value = activeButton + '(' + calculated.toFixed(3) + '), // ' + element.value
@@ -42,12 +76,19 @@ function calculate() {
     }
 }
 
-function copyTotal(str) {
-
+/**
+ * Copy calculated value
+ *
+ * @param {string} str
+ *
+ * @return {undefined}
+ */
+function copyTotal(str)
+{
     let tmp   = document.createElement('INPUT'), // Создаём новый текстовой input
         focus = document.activeElement // Получаем ссылку на элемент в фокусе (чтобы не терять фокус)
 
-    tmp.value = str; // Временному input вставляем текст для копирования
+    tmp.value = str // Временному input вставляем текст для копирования
 
     document.body.appendChild(tmp) // Вставляем input в DOM
     tmp.select() // Выделяем весь текст в input
@@ -56,10 +97,42 @@ function copyTotal(str) {
     focus.focus() // Возвращаем фокус туда, где был
 }
 
-function getTotalValue() {
+/**
+ * Get result value and copy
+ *
+ * @return {undefined}
+ */
+function getTotalValue()
+{
     calculate()
     copyTotal(result.value)
 }
 
+/**
+ * On press button listener
+ */
 allButtons.forEach(button => button.addEventListener('click', toggleActiveButton))
-allInputs.forEach(input => input.addEventListener('change', getTotalValue))
+
+/**
+ * on change inputs listener
+ */
+allInputs.forEach(input => input.addEventListener('input', getTotalValue))
+
+/**
+ * On press keyboard buttons listener
+ */
+window.addEventListener('keydown', function (e) {
+    if (e.ctrlKey === true) {
+        if (e.keyCode === 81) { // Q
+            handleActiveButton('wp')
+        }
+
+        if (e.keyCode === 87) { // W
+            handleActiveButton('hp')
+        }
+
+        if (e.keyCode === 69) { // E
+            handleActiveButton('fs')
+        }
+    }
+})
