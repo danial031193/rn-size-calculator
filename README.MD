@@ -14,7 +14,7 @@ When you change the "Element" field or one of the buttons below
 the "Result" field, the calculator writes the desired value 
 to the clipboard
 
-###Shortcut keys available
+## Shortcut keys available
 | Button | Shortcut |
 |:----|:-----:|
 | wp | `Ctrl + Q` |
