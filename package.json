@@ -35,6 +35,14 @@
         {
           "name": "@electron-forge/maker-dmg",
           "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-appx",
+          "config": {
+            "publisher": "CN=developmentca",
+            "devCert": "C:\\\\devcert.pfx",
+            "certPass": "abcd"
+          }
         }
       ]
     }
@@ -48,6 +56,7 @@
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.45",
+    "@electron-forge/maker-appx": "^6.0.0-beta.52",
     "@electron-forge/maker-deb": "^6.0.0-beta.45",
     "@electron-forge/maker-dmg": "^6.0.0-beta.49",
     "@electron-forge/maker-rpm": "^6.0.0-beta.45",
