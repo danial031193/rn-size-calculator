@@ -1,7 +1,7 @@
 {
   "name": "rn-size-calculator",
   "productName": "rn-size-calculator",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Calculate react native dp sizes",
   "main": "src/index.js",
   "scripts": {
@@ -55,22 +55,22 @@
     "electron-squirrel-startup": "^1.0.0"
   },
   "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.45",
-    "@electron-forge/maker-appx": "^6.0.0-beta.52",
-    "@electron-forge/maker-deb": "^6.0.0-beta.45",
-    "@electron-forge/maker-dmg": "^6.0.0-beta.49",
-    "@electron-forge/maker-rpm": "^6.0.0-beta.45",
-    "@electron-forge/maker-squirrel": "^6.0.0-beta.45",
-    "@electron-forge/maker-zip": "^6.0.0-beta.45",
+    "@electron-forge/cli": "^6.0.0-beta.63",
+    "@electron-forge/maker-appx": "^6.0.0-beta.63",
+    "@electron-forge/maker-deb": "^6.0.0-beta.63",
+    "@electron-forge/maker-dmg": "^6.0.0-beta.63",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.63",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.63",
+    "@electron-forge/maker-zip": "^6.0.0-beta.63",
     "browser-sync": "^2.26.5",
     "del": "^4.1.1",
-    "electron": "7.1.3",
+    "electron": "18.0.1",
     "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^6.1.0",
-    "gulp-csso": "^3.0.1",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-csso": "^4.0.1",
     "gulp-htmlmin": "^5.0.1",
-    "gulp-pug": "^4.0.1",
-    "gulp-sass": "^4.0.2",
+    "gulp-pug": "^5.0.0",
+    "gulp-sass": "^5.1.0",
     "gulp-watch": "^5.0.1"
   }
 }
