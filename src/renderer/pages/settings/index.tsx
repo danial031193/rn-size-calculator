@@ -1,6 +1,5 @@
 import type { FC } from 'react';
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 /**
  * Settings
@@ -9,9 +8,6 @@ import { Link } from 'react-router-dom';
 const Settings: FC = () => (
   <div>
     <p>Settings</p>
-    <Link to="/" replace>
-      Calculator
-    </Link>
   </div>
 );
 

@@ -1,7 +1,6 @@
 import type { FC } from 'react';
 import React from 'react';
-import { Link } from 'react-router-dom';
-import styles from './styles.module.scss';
+import { Button } from 'semantic-ui-react';
 
 /**
  * Calculator
@@ -9,10 +8,11 @@ import styles from './styles.module.scss';
  */
 const Calculator: FC = () => (
   <div>
-    <p className={styles.test}>Calculator</p>
-    <Link to="/settings" replace>
-      Settings
-    </Link>
+    <Button.Group>
+      <Button>wp</Button>
+      <Button>hp</Button>
+      <Button>fs</Button>
+    </Button.Group>
   </div>
 );
 
