@@ -2,6 +2,7 @@
  * Base webpack config used across other specific configs
  */
 
+import path from 'path';
 import webpack from 'webpack';
 import webpackPaths from './webpack.paths';
 import { dependencies as externals } from '../../release/app/package.json';
@@ -44,6 +45,19 @@ const configuration: webpack.Configuration = {
   resolve: {
     extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
     modules: [webpackPaths.srcPath, 'node_modules'],
+    alias: {
+      '@assets': path.resolve(__dirname, '../../src/renderer/assets'),
+      '@common': path.resolve(__dirname, '../../src/renderer/common'),
+      '@wrappers': path.resolve(__dirname, '../../src/renderer/common/wrappers'),
+      '@helpers': path.resolve(__dirname, '../../src/renderer/common/helpers'),
+      '@hooks': path.resolve(__dirname, '../../src/renderer/common/hooks'),
+      '@components': path.resolve(__dirname, '../../src/renderer/common/components'),
+      '@services': path.resolve(__dirname, '../../src/renderer/common/services'),
+      '@constants': path.resolve(__dirname, '../../src/renderer/constants'),
+      '@interfaces': path.resolve(__dirname, '../../src/renderer/interfaces'),
+      '@pages': path.resolve(__dirname, '../../src/renderer/pages'),
+      '@store': path.resolve(__dirname, '../../src/renderer/store'),
+    },
   },
 
   plugins: [

@@ -1,14 +1,10 @@
-import {
-  app,
-  Menu,
-  shell,
-  BrowserWindow,
-  MenuItemConstructorOptions,
-} from 'electron';
+/* eslint-disable sonarjs/no-identical-functions */
+import type { BrowserWindow, MenuItemConstructorOptions } from 'electron';
+import { app, Menu, shell } from 'electron';
 
-interface DarwinMenuItemConstructorOptions extends MenuItemConstructorOptions {
+interface IDarwinMenuItemConstructorOptions extends MenuItemConstructorOptions {
   selector?: string;
-  submenu?: DarwinMenuItemConstructorOptions[] | Menu;
+  submenu?: IDarwinMenuItemConstructorOptions[] | Menu;
 }
 
 export default class MenuBuilder {
@@ -32,6 +28,7 @@ export default class MenuBuilder {
         : this.buildDefaultTemplate();
 
     const menu = Menu.buildFromTemplate(template);
+
     Menu.setApplicationMenu(menu);
 
     return menu;
@@ -53,7 +50,7 @@ export default class MenuBuilder {
   }
 
   buildDarwinTemplate(): MenuItemConstructorOptions[] {
-    const subMenuAbout: DarwinMenuItemConstructorOptions = {
+    const subMenuAbout: IDarwinMenuItemConstructorOptions = {
       label: 'Electron',
       submenu: [
         {
@@ -84,7 +81,7 @@ export default class MenuBuilder {
         },
       ],
     };
-    const subMenuEdit: DarwinMenuItemConstructorOptions = {
+    const subMenuEdit: IDarwinMenuItemConstructorOptions = {
       label: 'Edit',
       submenu: [
         { label: 'Undo', accelerator: 'Command+Z', selector: 'undo:' },
@@ -138,7 +135,7 @@ export default class MenuBuilder {
         },
       ],
     };
-    const subMenuWindow: DarwinMenuItemConstructorOptions = {
+    const subMenuWindow: IDarwinMenuItemConstructorOptions = {
       label: 'Window',
       submenu: [
         {
@@ -157,13 +154,13 @@ export default class MenuBuilder {
         {
           label: 'Learn More',
           click() {
-            shell.openExternal('https://electronjs.org');
+            void shell.openExternal('https://electronjs.org');
           },
         },
         {
           label: 'Documentation',
           click() {
-            shell.openExternal(
+            void shell.openExternal(
               'https://github.com/electron/electron/tree/main/docs#readme'
             );
           },
@@ -171,13 +168,15 @@ export default class MenuBuilder {
         {
           label: 'Community Discussions',
           click() {
-            shell.openExternal('https://www.electronjs.org/community');
+            void shell.openExternal('https://www.electronjs.org/community');
           },
         },
         {
           label: 'Search Issues',
           click() {
-            shell.openExternal('https://github.com/electron/electron/issues');
+            void shell.openExternal(
+              'https://github.com/electron/electron/issues'
+            );
           },
         },
       ],
@@ -193,7 +192,7 @@ export default class MenuBuilder {
   }
 
   buildDefaultTemplate() {
-    const templateDefault = [
+    return [
       {
         label: '&File',
         submenu: [
@@ -258,13 +257,13 @@ export default class MenuBuilder {
           {
             label: 'Learn More',
             click() {
-              shell.openExternal('https://electronjs.org');
+              void shell.openExternal('https://electronjs.org');
             },
           },
           {
             label: 'Documentation',
             click() {
-              shell.openExternal(
+              void shell.openExternal(
                 'https://github.com/electron/electron/tree/main/docs#readme'
               );
             },
@@ -272,19 +271,19 @@ export default class MenuBuilder {
           {
             label: 'Community Discussions',
             click() {
-              shell.openExternal('https://www.electronjs.org/community');
+              void shell.openExternal('https://www.electronjs.org/community');
             },
           },
           {
             label: 'Search Issues',
             click() {
-              shell.openExternal('https://github.com/electron/electron/issues');
+              void shell.openExternal(
+                'https://github.com/electron/electron/issues'
+              );
             },
           },
         ],
       },
     ];
-
-    return templateDefault;
   }
 }

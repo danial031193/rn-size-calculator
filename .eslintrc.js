@@ -1,30 +1,40 @@
 module.exports = {
-  extends: 'erb',
-  rules: {
-    // A temporary hack related to IDE not resolving correct package.json
-    'import/no-extraneous-dependencies': 'off',
-    'import/no-unresolved': 'error',
-    // Since React 17 and typescript 4.1 you can safely disable the rule
-    'react/react-in-jsx-scope': 'off',
+  root: true,
+  extends: [
+    'prettier',
+    'plugin:prettier/recommended',
+    'plugin:jsx-a11y/recommended',
+    '@lomray/eslint-config-react',
+  ],
+  ignorePatterns: ['/*.*', 'src/renderer/@types'],
+  plugins: [],
+  env: {
+    browser: true,
+    es6: true,
+    node: true,
+    serviceworker: true,
   },
+  globals: {
+    NodeJS: true,
+    JSX: true,
+  },
+  parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 2020,
-    sourceType: 'module',
-    project: './tsconfig.json',
-    tsconfigRootDir: __dirname,
-    createDefaultProgram: true,
+    ecmaFeatures: {
+      jsx: true,
+    },
+    files: ['*.ts', '*.tsx'],
+    project: ['./tsconfig.json'],
+    tsconfigRootDir: './',
   },
-  settings: {
-    'import/resolver': {
-      // See https://github.com/benmosher/eslint-plugin-import/issues/1396#issuecomment-575727774 for line below
-      node: {},
-      webpack: {
-        config: require.resolve('./.erb/configs/webpack.config.eslint.ts'),
+  rules: {
+    'unicorn/import-index': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto',
       },
-      typescript: {},
-    },
-    'import/parsers': {
-      '@typescript-eslint/parser': ['.ts', '.tsx'],
-    },
+    ],
   },
 };

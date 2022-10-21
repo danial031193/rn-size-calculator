@@ -1,4 +1,6 @@
-import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron';
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+import type { IpcRendererEvent } from 'electron';
+import { contextBridge, ipcRenderer } from 'electron';
 
 export type Channels = 'ipc-example';
 
@@ -10,6 +12,7 @@ contextBridge.exposeInMainWorld('electron', {
     on(channel: Channels, func: (...args: unknown[]) => void) {
       const subscription = (_event: IpcRendererEvent, ...args: unknown[]) =>
         func(...args);
+
       ipcRenderer.on(channel, subscription);
 
       return () => {

@@ -1,4 +1,5 @@
-import { Channels } from 'main/preload';
+/* eslint-disable @typescript-eslint/naming-convention */
+import type { Channels } from 'main/preload';
 
 declare global {
   interface Window {
