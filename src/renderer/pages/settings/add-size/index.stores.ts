@@ -1,8 +1,8 @@
 import type { StoresType } from '@lomray/react-mobx-manager';
-import CalculatorStore from '@store/calculator';
+import AppStore from '@store/app';
 
 const stores = {
-  store: CalculatorStore,
+  store: AppStore,
 };
 
 export type IStore = StoresType<typeof stores>;

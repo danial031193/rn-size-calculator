@@ -7,3 +7,5 @@ export const DEFAULT_SIZES_LIST: TSizesList = {
 export const DEFAULT_SIZE_ID = Object.keys(
   DEFAULT_SIZES_LIST
 )[0] as keyof TSizesList;
+
+export const CALCULATIONS_ERROR = '// Calculations Error';

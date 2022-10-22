@@ -1,19 +1,19 @@
 import { Manager } from '@lomray/react-mobx-manager';
-import { action, makeObservable, observable, computed } from 'mobx';
+import { action, computed, makeObservable, observable } from 'mobx';
 import { DEFAULT_SIZE_ID, DEFAULT_SIZES_LIST } from '@constants/index';
 import SIZE from '@interfaces/size';
 import type TSizesList from '@interfaces/sizes-list';
 
 /**
- * Main calculator store
+ * Main app store
  */
-class CalculatorStore {
+class AppStore {
   static isSingleton = true;
 
   /**
    * Store id
    */
-  static id = 'Calculator';
+  static id = 'AppStore';
 
   /**
    * Active button
@@ -88,4 +88,4 @@ class CalculatorStore {
   };
 }
 
-export default Manager.persistStore(CalculatorStore, 'calculator');
+export default Manager.persistStore(AppStore, 'calculator-app');
