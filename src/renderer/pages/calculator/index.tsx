@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import React from 'react';
-import SizeButtons from './size-buttons';
+import SizeButtons from './size-buttons/index.wrapper';
 import SizeForm from './size-form';
 
 /**

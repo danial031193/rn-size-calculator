@@ -1,6 +1,7 @@
 import type { FC, FormEvent } from 'react';
 import React, { useCallback } from 'react';
 import { Button, Divider, Form, Header } from 'semantic-ui-react';
+import type { IStore } from './index.stores';
 import styles from './styles.module.scss';
 
 const INPUTS = ['Width', 'Height'];
@@ -9,24 +10,27 @@ const INPUTS = ['Width', 'Height'];
  * AddSize
  * @constructor
  */
-const AddSize: FC = () => {
+const AddSize: FC<IStore> = ({ store: { addSizeListItem } }) => {
   /**
    * On submit new sizes
    */
-  const onSubmit = useCallback((e: FormEvent<HTMLFormElement>) => {
-    const data = new FormData(e.currentTarget);
+  const onSubmit = useCallback(
+    (e: FormEvent<HTMLFormElement>) => {
+      const data = new FormData(e.currentTarget);
 
-    const width = data.get('width');
-    const height = data.get('height');
+      const width = data.get('width');
+      const height = data.get('height');
 
-    if (!width || !height) {
-      return;
-    }
+      if (!width || !height) {
+        return;
+      }
 
-    const newData = [Number(width), Number(height)];
+      const newData = [Number(width), Number(height)] as const;
 
-    console.log({ newData });
-  }, []);
+      addSizeListItem(newData);
+    },
+    [addSizeListItem]
+  );
 
   return (
     <div className={styles.wrapper}>
@@ -40,7 +44,7 @@ const AddSize: FC = () => {
               fluid
               name={id.toLowerCase()}
               type="number"
-              label="Width"
+              label={id}
               placeholder={`Enter ${id.toLowerCase()}`}
             />
           ))}

@@ -1,31 +1,32 @@
 import type { FC, MouseEvent } from 'react';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 import { Button } from 'semantic-ui-react';
-import SIZES from '@interfaces/sizes';
+import SIZE from '@interfaces/size';
+import type { IStore } from './index.stores';
 import styles from './styles.module.scss';
 
 /**
  * SizeButtons
  * @constructor
  */
-const SizeButtons: FC = () => {
-  const [active, setActive] = useState(SIZES.WIDTH);
-
+const SizeButtons: FC<IStore> = ({
+  store: { activeSizeButton, setActiveSizeButton },
+}) => {
   const onClick = useCallback(
     (e: MouseEvent<HTMLButtonElement>) =>
-      setActive(e.currentTarget.dataset.value as SIZES),
-    []
+      void setActiveSizeButton(e.currentTarget.dataset.value as SIZE),
+    [setActiveSizeButton]
   );
 
   return (
     <div>
       <Button.Group className={styles.buttons}>
-        {Object.values(SIZES).map((size) => (
+        {Object.values(SIZE).map((size) => (
           <Button
             key={size}
             data-value={size}
             onClick={onClick}
-            active={active === size}
+            active={activeSizeButton === size}
           >
             {size}
           </Button>

@@ -1,0 +1,15 @@
+.field {
+  display: block;
+}
+
+.button {
+  margin-left: 2em !important;
+  opacity: 0;
+  visibility: collapse;
+}
+
+.field:hover .button {
+  opacity: 1;
+  visibility: visible;
+}
+
