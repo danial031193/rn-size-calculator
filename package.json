@@ -2,7 +2,7 @@
   "name": "rn-size-calculator",
   "productName": "rn-size-calculator",
   "version": "2.0.0",
-  "description": "Calculate react native dp sizes",
+  "description": "Calculate react native layout sizes",
   "main": "./src/main/main.ts",
   "scripts": {
     "build": "concurrently \"npm run build:main\" \"npm run build:renderer\"",
@@ -10,6 +10,7 @@
     "build:renderer": "cross-env NODE_ENV=production TS_NODE_TRANSPILE_ONLY=true webpack --config ./.erb/configs/webpack.config.renderer.prod.ts",
     "postinstall": "ts-node .erb/scripts/check-native-dep.js && electron-builder install-app-deps && cross-env NODE_ENV=development TS_NODE_TRANSPILE_ONLY=true webpack --config ./.erb/configs/webpack.config.renderer.dev.dll.ts",
     "lint:check": "eslint --ext \".ts,.tsx\" \"src/**/*.{ts,tsx,*.ts,*tsx}\"",
+    "ts:check": "tsc --project ./tsconfig.json --skipLibCheck --noemit",
     "lint:format": "eslint --fix --ext \".ts,.tsx\" \"src/**/*.{ts,tsx,*.ts,*tsx}\"",
     "package": "ts-node ./.erb/scripts/clean.js dist && npm run build && electron-builder build --publish never",
     "prepare": "husky install",
@@ -65,6 +66,7 @@
     ]
   },
   "dependencies": {
+    "@lomray/client-helpers": "^1.1.2",
     "@lomray/client-helpers-react": "^1.1.2",
     "electron-debug": "^3.2.0",
     "electron-log": "^4.4.8",
