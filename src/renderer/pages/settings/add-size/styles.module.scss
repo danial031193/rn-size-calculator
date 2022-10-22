@@ -1,0 +1,12 @@
+.wrapper {
+  margin-top: 2em;
+}
+
+.group {
+  flex-wrap: nowrap !important;
+  margin-bottom: 0.5em !important;
+
+  input {
+    width: 100% !important;
+  }
+}

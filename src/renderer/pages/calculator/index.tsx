@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import React from 'react';
-import { Button } from 'semantic-ui-react';
+import SizeButtons from './size-buttons';
+import SizeForm from './size-form';
 
 /**
  * Calculator
@@ -8,11 +9,8 @@ import { Button } from 'semantic-ui-react';
  */
 const Calculator: FC = () => (
   <div>
-    <Button.Group>
-      <Button>wp</Button>
-      <Button>hp</Button>
-      <Button>fs</Button>
-    </Button.Group>
+    <SizeForm />
+    <SizeButtons />
   </div>
 );
 

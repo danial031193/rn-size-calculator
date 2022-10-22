@@ -1,5 +1,7 @@
 import type { FC } from 'react';
 import React from 'react';
+import AddSize from './add-size';
+import SelectSizes from './select-sizes';
 
 /**
  * Settings
@@ -7,7 +9,8 @@ import React from 'react';
  */
 const Settings: FC = () => (
   <div>
-    <p>Settings</p>
+    <SelectSizes />
+    <AddSize />
   </div>
 );
 

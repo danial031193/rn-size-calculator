@@ -1,0 +1,11 @@
+@import 'src/renderer/assets/styles/utils/mixins';
+
+.container {
+  margin: 0 auto;
+  max-width: 400px;
+  padding: 10px;
+}
+
+.nav {
+  @include flex($just: flex-end);
+}
